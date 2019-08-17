@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/component: service
+  name: multi-stage-react-app-example
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: multi-stage-react-app-example
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/component: service
+        app: multi-stage-react-app-example
+    spec:
+      containers:
+        - name: multi-stage-react-app-example
+          image: multi-stage-react-app-example:prod
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name:  multi-stage-react-app-example-config-volume
+              mountPath: /usr/share/nginx/html/config.js
+              subPath: config.js
+              readOnly: true
+      volumes:
+        - name: multi-stage-react-app-example-config-volume
+          configMap:
+            name: multi-stage-react-app-example-config
