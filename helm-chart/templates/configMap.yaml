@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: multi-stage-react-app-example-config
+  annotations:
+    # https://github.com/helm/helm/blob/master/docs/charts_hooks.md
+    "helm.sh/hook-delete-policy": "before-hook-creation"
+    "helm.sh/hook": pre-install, pre-upgrade
+data:
+  config.js: {{ toYaml .Values.configValues | indent 4 }}
