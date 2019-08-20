@@ -22,12 +22,20 @@ function App() {
     return (
 
         <div>
-            <h1>Latest Public Bookmarks</h1>
+            <nav className="navbar navbar-light bg-light">
+                <a className="navbar-brand" href="https://www.bookmarks.dev">
+                    <img src="/logo.png" width="30" height="30"
+                         className="d-inline-block align-top" alt=""/>
+                    &nbsp; Bookmarks
+                </a>
+            </nav>
+            <br/>
+            <h3>Latest Public Bookmarks</h3>
             {data.map((bookmark) => (
                 <div className="card">
                     <div className="card-body">
                         <h5 className="card-title">{bookmark.name}</h5>
-                        <h6 className="card-subtitle mb-2 text-muted">{bookmark.location}</h6>
+                        <a href={bookmark.location}><h6 className="card-subtitle mb-2 text-muted">{bookmark.location}</h6></a>
                         <p className="card-text">{bookmark.description}</p>
                     </div>
                 </div>
