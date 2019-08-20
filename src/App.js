@@ -29,8 +29,6 @@ function App() {
                     &nbsp; Bookmarks
                 </a>
             </nav>
-            <br/>
-            <h3>Latest Public Bookmarks</h3>
             {data.map((bookmark) => (
                 <div className="card">
                     <div className="card-body">
