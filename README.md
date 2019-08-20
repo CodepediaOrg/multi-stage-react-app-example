@@ -28,26 +28,26 @@ Your app is ready to be deployed!
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
 
-### Deploy on local Kubernetes
+### Deploy on Kubernetes
 
 ### Build docker image
 ```
-$ docker build --tag multi-stage-react-app-example:prod .
+$ docker build --tag multi-stage-react-app-example:latest .
 ```
 
 #### Deploy with native `kubectl` commands
 ```
-$ kubectl apply -f kubernetes/config-local.yaml
-$ kubectl apply -f kubernetes/deployment.yaml
-$ kubectl apply -f kubernetes/service.yaml
+kubectl apply -f kubernetes/config-dev.yaml # creates the configMap in the Kubernetes cluster
+kubectl apply -f kubernetes/deployment.yaml
+kubectl apply -f kubernetes/service.yaml
 ```
 
 ** Undo deployments ** 
 
 ```
-$ kubectl delete configMap multi-stage-react-app-example-config
-$ kubectl delete deployment multi-stage-react-app-example
-$ kubectl delete service multi-stage-react-app-example
+kubectl delete configMap multi-stage-react-app-example-config
+kubectl delete deployment multi-stage-react-app-example
+kubectl delete service multi-stage-react-app-example
 ```
 
 Forward port 

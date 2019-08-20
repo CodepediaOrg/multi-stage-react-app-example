@@ -6,15 +6,18 @@ function App() {
 
     const [data, setData] = useState([]);
 
+    let navbarStyles = {
+        backgroundColor: window.REACT_APP_NAVBAR_COLOR
+    }
+
     useEffect(() => {
         const fetchData = async () => {
 
             const result = await axios(
-                'https://www.bookmarks.dev/api/public/bookmarks',
+                window.REACT_APP_API_URL,
             );
             setData(result.data);
         };
-
         fetchData();
     }, []);
 
@@ -22,11 +25,11 @@ function App() {
     return (
 
         <div>
-            <nav className="navbar navbar-light bg-light">
+            <nav className="navbar navbar-light" style={navbarStyles}>
                 <a className="navbar-brand" href="https://www.bookmarks.dev">
                     <img src="/logo.png" width="30" height="30"
                          className="d-inline-block align-top" alt=""/>
-                    &nbsp; Bookmarks
+                    &nbsp; Bookmarks - environment {window.REACT_APP_ENVIRONMENT}
                 </a>
             </nav>
             {data.map((bookmark) => (

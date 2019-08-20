@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: multi-stage-react-app-example
-          image: multi-stage-react-app-example:prod
+          image: multi-stage-react-app-example:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
