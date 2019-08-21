@@ -1,7 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: multi-stage-react-app-example-config
-data:
-  config.js: |
-    window.REACT_APP_API_URL: https://www.bookmarks.dev/api/public/bookmarks

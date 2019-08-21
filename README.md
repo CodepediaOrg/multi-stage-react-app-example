@@ -55,12 +55,12 @@ kubectl delete service multi-stage-react-app-example
 Forward port 
 
 ```
-$ kubectl port-forward svc/multi-stage-react-app-example 3001:80
+kubectl port-forward svc/multi-stage-react-app-example 3001:80
 ```
 
 Then access the app at [http://localhost:3001](http://localhost:3001)
 
-## Deploy with helm
+## Deploy with [helm](https://helm.sh/)
 
 ### Create release
 ```
@@ -73,4 +73,31 @@ helm ls #verify dev-release is present
 
 ```
 helm delete --purge dev-release
+```
+
+## Deploy with [kustomize](https://kustomize.io/)
+
+Build with kustomize to see what Kubernetes objects are generated
+```
+kustomize build kustomize/base/
+```
+
+Apply base
+```
+kubectl apply -k kustomize/base
+```
+
+Undo
+```
+kubectl delete -k kustomize/base
+```
+
+Apply DEV overlay
+```
+kubectl apply -k kustomize/overlays/dev
+```
+
+Undo
+```
+kubectl delete -k kustomize/overlays/dev
 ```
