@@ -29,7 +29,7 @@ function App() {
                 <a className="navbar-brand" href="https://www.bookmarks.dev">
                     <img src="/logo.png" width="30" height="30"
                          className="d-inline-block align-top" alt=""/>
-                    &nbsp; Bookmarks - environment {window.REACT_APP_ENVIRONMENT}
+                    &nbsp; Bookmarks - environment <b>{window.REACT_APP_ENVIRONMENT}</b>
                 </a>
             </nav>
             {data.map((bookmark) => (

@@ -28,7 +28,9 @@ Your app is ready to be deployed!
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
 
-### Deploy on Kubernetes
+# Deploy on Kubernetes
+
+## Normal objects
 
 ### Build docker image
 ```
@@ -57,3 +59,18 @@ $ kubectl port-forward svc/multi-stage-react-app-example 3001:80
 ```
 
 Then access the app at [http://localhost:3001](http://localhost:3001)
+
+## Deploy with helm
+
+### Create release
+```
+helm upgrade dev-release ./helm-chart/ --install --force --values helm-chart/config-values/config-dev.yaml
+helm ls #verify dev-release is present
+```
+
+
+### Undo release
+
+```
+helm delete --purge dev-release
+```
