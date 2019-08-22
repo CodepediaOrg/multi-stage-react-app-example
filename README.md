@@ -101,3 +101,28 @@ Undo
 ```
 kubectl delete -k kustomize/overlays/dev
 ```
+
+## Cherry on the cake - use [skaffold](https://skaffold.dev/)
+
+> We will use [skaffold profiles](https://skaffold.dev/docs/how-tos/profiles/)
+
+### Deploy via kubectl 
+```
+skaffold run -p native-kubernetes
+```
+
+```
+skaffold delete -p native-kubernetes
+```
+
+
+### Deploy via kustomize
+
+For example build the prod thing:
+```
+skaffold run -p kustomize-prod
+```
+
+```
+skaffold delete -p kustomize-prod
+```

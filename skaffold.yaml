@@ -1,0 +1,26 @@
+apiVersion: skaffold/v1beta12
+kind: Config
+build:
+  artifacts:
+    - image: multi-stage-react-app-example
+      docker:
+        dockerfile: Dockerfile
+deploy:
+  kustomize:
+    path: kustomize/overlays/dev
+profiles:
+  - name: native-kubernetes
+    build:
+      artifacts:
+        - image: multi-stage-react-app-example
+          docker:
+            dockerfile: Dockerfile
+    deploy:
+      kubectl:
+        manifests:
+          - kubernetes/*
+
+  - name: kustomize-prod
+    deploy:
+      kustomize:
+        path: kustomize/overlays/prod
