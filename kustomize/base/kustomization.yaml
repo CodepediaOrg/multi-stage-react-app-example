@@ -6,3 +6,8 @@ resources:
 
 commonLabels:
   app.kubernetes.io/name: multi-stage-react-app-example
+
+configMapGenerator:
+  - name: multi-stage-react-app-example-config
+    files:
+      - local.properties

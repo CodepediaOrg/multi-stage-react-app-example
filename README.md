@@ -34,7 +34,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ### Build docker image
 ```
-$ docker build --tag multi-stage-react-app-example:latest .
+docker build --tag multi-stage-react-app-example:latest .
 ```
 
 #### Deploy with native `kubectl` commands

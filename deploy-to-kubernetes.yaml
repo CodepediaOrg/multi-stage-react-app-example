@@ -1,3 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app.kubernetes.io/component: service
+  name: multi-stage-react-app-example
+spec:
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: 80
+  selector:
+    app: multi-stage-react-app-example
+  type: NodePort
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -21,12 +37,3 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
-          volumeMounts:
-            - name:  multi-stage-react-app-example-config-volume
-              mountPath: /usr/share/nginx/html/config.js
-              subPath: config.js
-              readOnly: true
-      volumes:
-        - name: multi-stage-react-app-example-config-volume
-          configMap:
-            name: multi-stage-react-app-example-config

@@ -2,4 +2,9 @@ bases:
   - ../../base
 
 patchesStrategicMerge:
-  - config-prod.yaml
+  - deployment-prod.yaml
+
+configMapGenerator:
+  - name: multi-stage-react-app-example-config
+    files:
+      - prod.properties
