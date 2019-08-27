@@ -1,4 +1,7 @@
+bases:
+  - ../../base
+
 configMapGenerator:
   - name: multi-stage-react-app-example-config
     files:
-      - dev.properties
+      - config.js=dev.properties #add here the key config.js as you would when creating with kubectl
