@@ -47,7 +47,7 @@ spec:
       volumes:
         - name: multi-stage-react-app-example-config-volume
           configMap:
-            name: multi-stage-react-app-example-config
+            name: {{ .Release.Name }}-multi-stage-react-app-example-config
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
